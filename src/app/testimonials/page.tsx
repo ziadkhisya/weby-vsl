@@ -3,7 +3,7 @@ import { ArrowLeft, Star, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/footer";
 import { TopBar } from "@/components/top-bar";
-import { cn } from "@/lib/utils";
+
 
 const testimonials = [
     {

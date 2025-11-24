@@ -102,7 +102,7 @@ export function VslPlayer() {
     }
 
     const player = new Player(iframeRef.current, {
-      url: sanitizedEmbedSrc,
+      url: sanitizedEmbedSrc as any,
       controls: false, // We want custom controls
       autoplay: true,
       responsive: true,
