@@ -1,4 +1,4 @@
-import { ArrowRight, ExternalLink, Flag, CheckCircle2, TrendingUp } from "lucide-react";
+import { ExternalLink, Flag, CheckCircle2, TrendingUp } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -7,7 +7,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 
 type CaseStudy = {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Star, MessageCircle } from "lucide-react";
+import { ArrowLeft, Star, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/footer";
 import { TopBar } from "@/components/top-bar";

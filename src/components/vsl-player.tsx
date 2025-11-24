@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
-import type Hls from "hls.js";
 import Player from "@vimeo/player";
 import { Button } from "@/components/ui/button";
 import {
@@ -31,14 +30,6 @@ const resolveProvider = (): Provider => {
 
 const embedBaseUrl =
   process.env.NEXT_PUBLIC_EMBED_URL ?? process.env.EMBED_URL ?? "";
-const manifestUrl =
-  process.env.NEXT_PUBLIC_HLS_MANIFEST_URL ??
-  process.env.HLS_MANIFEST_URL ??
-  "";
-const directVideoUrl =
-  process.env.NEXT_PUBLIC_DIRECT_MP4_URL ??
-  process.env.DIRECT_MP4_URL ??
-  "";
 
 const analyticsMilestones = [25, 50, 75, 100];
 
@@ -48,7 +39,6 @@ export function VslPlayer() {
   const provider = resolveProvider();
   const containerRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const htmlVideoRef = useRef<HTMLVideoElement>(null);
   const vimeoPlayerRef = useRef<Player | null>(null);
   const analyticsRef = useRef<Set<number>>(new Set());
 
@@ -112,7 +102,7 @@ export function VslPlayer() {
     }
 
     const player = new Player(iframeRef.current, {
-      url: sanitizedEmbedSrc as any,
+      url: sanitizedEmbedSrc,
       controls: false, // We want custom controls
       autoplay: true,
       responsive: true,
@@ -146,12 +136,8 @@ export function VslPlayer() {
 
 
   // HLS / Direct setup (Legacy support)
-  useEffect(() => {
-    if (provider !== "hls" || !manifestUrl) return;
-    // ... (HLS implementation remains similar if needed, but focusing on Vimeo)
-    // For brevity, keeping it minimal or assuming Vimeo is the main focus.
-    // If HLS is needed, we can re-add it. The user asked for Vimeo specifically.
-  }, [provider]);
+  // HLS / Direct setup (Legacy support)
+  // Removed unused effect
 
   // Controls Handlers
   const togglePlay = useCallback(() => {
@@ -223,7 +209,7 @@ export function VslPlayer() {
         {/* Video Container */}
         {provider === "vimeo" && (
           <div
-            ref={iframeRef as any} // Vimeo player attaches to a div
+            ref={iframeRef as React.RefObject<HTMLDivElement>} // Vimeo player attaches to a div
             className="h-full w-full"
           />
         )}
