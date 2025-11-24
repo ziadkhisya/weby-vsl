@@ -64,7 +64,7 @@ export function VslPlayer() {
     }
 
     return embedBaseUrl || defaultVimeo;
-  }, [gateOpen, provider]);
+  }, []);
 
   const fireMilestone = (percent: number) => {
     analyticsMilestones.forEach((milestone) => {
